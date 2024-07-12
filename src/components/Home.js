@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome to HiRide</h1>
-      <nav>
-        <ul>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/signup">Signup</Link></li>
-          <li><Link to="/book">Book Driver</Link></li>
-        </ul>
-      </nav>
+    <div className="container">
+      <h2>Welcome to HiRide</h2>
+      <Link to="/bookdriver"><button>Book a Driver</button></Link>
+      <Link to="/driver-dashboard"><button>Driver Dashboard</button></Link>
+      <Link to="/admin-panel"><button>Admin Panel</button></Link>
     </div>
   );
 };

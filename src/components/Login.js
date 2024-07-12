@@ -1,41 +1,39 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
 
 const Login = () => {
-  const [phone, setPhone] = useState('');
+  const [mobile, setMobile] = useState('');
   const [otp, setOtp] = useState('');
-  const [confirmationResult, setConfirmationResult] = useState(null);
+  const [isOtpSent, setIsOtpSent] = useState(false);
 
-  const handleSendOtp = async () => {
-    const auth = getAuth();
-    window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
-    const appVerifier = window.recaptchaVerifier;
-
-    try {
-      const result = await signInWithPhoneNumber(auth, phone, appVerifier);
-      setConfirmationResult(result);
-    } catch (error) {
-      console.error("Error sending OTP", error);
-    }
+  const handleSendOtp = () => {
+    // Handle sending OTP logic
+    setIsOtpSent(true);
   };
 
-  const handleVerifyOtp = async () => {
-    try {
-      await confirmationResult.confirm(otp);
-      console.log('User signed in successfully.');
-    } catch (error) {
-      console.error("Error verifying OTP", error);
-    }
+  const handleLogin = () => {
+    // Handle login logic
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone Number" />
-      <button onClick={handleSendOtp}>Send OTP</button>
-      <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="OTP" />
-      <button onClick={handleVerifyOtp}>Verify OTP</button>
-      <div id="recaptcha-container"></div>
+    <div className="container">
+      <h2>Login</h2>
+      <input
+        type="text"
+        placeholder="Enter Mobile Number"
+        value={mobile}
+        onChange={(e) => setMobile(e.target.value)}
+      />
+      {isOtpSent && (
+        <input
+          type="text"
+          placeholder="Enter OTP"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+        />
+      )}
+      <button onClick={isOtpSent ? handleLogin : handleSendOtp}>
+        {isOtpSent ? 'Login' : 'Send OTP'}
+      </button>
     </div>
   );
 };

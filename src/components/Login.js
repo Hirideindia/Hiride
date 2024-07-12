@@ -1,40 +1,38 @@
+// src/components/Login.js
 import React, { useState } from 'react';
+import { auth } from '../firebaseConfig';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
-  const [mobile, setMobile] = useState('');
-  const [otp, setOtp] = useState('');
-  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSendOtp = () => {
-    // Handle sending OTP logic
-    setIsOtpSent(true);
-  };
-
-  const handleLogin = () => {
-    // Handle login logic
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert('Logged in successfully!');
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
   };
 
   return (
-    <div className="container">
-      <h2>Login</h2>
+    <form onSubmit={handleSubmit}>
       <input
-        type="text"
-        placeholder="Enter Mobile Number"
-        value={mobile}
-        onChange={(e) => setMobile(e.target.value)}
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
       />
-      {isOtpSent && (
-        <input
-          type="text"
-          placeholder="Enter OTP"
-          value={otp}
-          onChange={(e) => setOtp(e.target.value)}
-        />
-      )}
-      <button onClick={isOtpSent ? handleLogin : handleSendOtp}>
-        {isOtpSent ? 'Login' : 'Send OTP'}
-      </button>
-    </div>
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <button type="submit">Login</button>
+    </form>
   );
 };
 

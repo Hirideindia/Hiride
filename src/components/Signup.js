@@ -1,38 +1,39 @@
+// src/components/Signup.js
 import React, { useState } from 'react';
+import { auth } from '../firebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-const SignUp = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [mobile, setMobile] = useState('');
+const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    // Handle sign up logic
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert('User created successfully!');
+    } catch (error) {
+      console.error('Error signing up:', error);
+    }
   };
 
   return (
-    <div className="container">
-      <h2>Sign Up</h2>
+    <form onSubmit={handleSubmit}>
       <input
-        type="text"
-        placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
       />
       <input
-        type="text"
-        placeholder="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
       />
-      <input
-        type="text"
-        placeholder="Mobile Number"
-        value={mobile}
-        onChange={(e) => setMobile(e.target.value)}
-      />
-      <button onClick={handleSignUp}>Sign Up</button>
-    </div>
+      <button type="submit">Sign Up</button>
+    </form>
   );
 };
 
-export default SignUp;
+export default Signup;

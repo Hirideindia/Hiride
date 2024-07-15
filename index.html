@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>HiRide</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+      <a class="logo" href="index.html">HiRide</a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+      <ul>
+        <li><a href="#intro" class="active">Welcome</a></li>
+        <li><a href="#booking">Book a Driver</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+
+      <!-- Introduction -->
+      <section id="intro" class="main">
+        <div class="spotlight">
+          <div class="content">
+            <header class="major">
+              <h2>Welcome to HiRide</h2>
+            </header>
+            <p>We offer a variety of packages to suit your driving needs, including hourly, roundtrip, one-way, outstation, and monthly options. Book a driver easily and quickly with HiRide.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking Form -->
+      <section id="booking" class="wrapper style1 fade-up">
+        <div class="inner">
+          <h2>Book a Driver</h2>
+          <form id="bookingForm">
+            <div class="fields">
+              <div class="field half">
+                <label for="package">Package</label>
+                <select id="package" name="package">
+                  <option value="hourly">Hourly</option>
+                  <option value="roundtrip">Roundtrip</option>
+                  <option value="oneway">One-way</option>
+                  <option value="outstation">Outstation</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+              <div class="field half">
+                <label for="startDate">Start Date & Time</label>
+                <input type="datetime-local" id="startDate" name="startDate" required />
+              </div>
+              <div class="field half">
+                <label for="endDate">End Date & Time</label>
+                <input type="datetime-local" id="endDate" name="endDate" required />
+              </div>
+              <div class="field half">
+                <label for="startLocation">Start Location</label>
+                <input type="text" id="startLocation" name="startLocation" required />
+              </div>
+              <div class="field half">
+                <label for="endLocation">End Location</label>
+                <input type="text" id="endLocation" name="endLocation" required />
+              </div>
+              <div class="field half">
+                <label for="carType">Type of Car</label>
+                <select id="carType" name="carType">
+                  <option value="hatchback">Hatchback</option>
+                  <option value="sedan">Sedan</option>
+                  <option value="suv">SUV</option>
+                  <option value="compact_suv">Compact SUV</option>
+                  <option value="luxury">Luxury</option>
+                </select>
+              </div>
+              <div class="field half">
+                <label for="transmission">Transmission</label>
+                <select id="transmission" name="transmission">
+                  <option value="manual">Manual</option>
+                  <option value="automatic">Automatic</option>
+                </select>
+              </div>
+              <div class="field half">
+                <label for="fare">Estimated Fare</label>
+                <input type="text" id="fare" name="fare" readonly />
+              </div>
+            </div>
+            <ul class="actions">
+              <li><button type="button" onclick="calculateFare()">Calculate Fare</button></li>
+              <li><button type="submit">Book Now</button></li>
+            </ul>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <ul class="copyright">
+          <li>&copy; HiRide. All rights reserved.</li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCZ7UXxGoUlyxxNeRjcWT_7zmm9RjMX7fE",
+        authDomain: hiride-10d34.firebaseapp.com",
+        projectId: "hiride-10d34",
+        storageBucket: "hiride-10d34.appspot.com",
+        messagingSenderId: "901713666193",
+        appId: "1:901713666193:web:88b8558a029c462e34df30"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var db = firebase.firestore();
+    </script>
+
+    <!-- Booking Form Script -->
+    <script>
+      function calculateFare() {
+        const package = document.getElementById('package').value;
+        const startDate = new Date(document.getElementById('startDate').value);
+        const endDate = new Date(document.getElementById('endDate').value);
+        const carType = document.getElementById('carType').value;
+        const transmission = document.getElementById('transmission').value;
+
+        let fare = 0;
+
+        // Example fare calculation logic (needs real implementation)
+        const timeDiff = (endDate - startDate) / (1000 * 60 * 60); // in hours
+        fare = timeDiff * 100; // Example rate per hour
+
+        if (carType === 'luxury') {
+          fare += 200;
+        }
+
+        if (transmission === 'automatic') {
+          fare += 50;
+        }
+
+        document.getElementById('fare').value = fare;
+      }
+
+      document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const bookingDetails = {
+          package: document.getElementById('package').value,
+          startDate: document.getElementById('startDate').value,
+          endDate: document.getElementById('endDate').value,
+          startLocation: document.getElementById('startLocation').value,
+          endLocation: document.getElementById('endLocation').value,
+          carType: document.getElementById('carType').value,
+          transmission: document.getElementById('transmission').value,
+          fare: document.getElementById('fare').value,
+        };
+
+        // Save to Firestore (use real Firestore API here)
+        saveBookingToFirestore(bookingDetails);
+      });
+
+      function saveBookingToFirestore(bookingDetails) {
+        console.log('Saving booking to Firestore:', bookingDetails);
+
+        db.collection("bookings").add(bookingDetails)
+          .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id);
+            alert('Booking confirmed! Your driver will be assigned shortly.');
+          })
+          .catch((error) => {
+            console.error("Error adding document: ", error);
+          });
+      }
+    </script>
+  </body>
+</html>

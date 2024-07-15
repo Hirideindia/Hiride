@@ -1,66 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <title>HiRide</title>
-</head>
-<body>
-    <nav>
-        <div class="logo">HiRide</div>
-        <div class="menu">
-            <span class="menu-icon">☰</span>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="side-panel">
-            <div class="ride-options">
-                <div class="tabs">
-                    <button class="tab active" id="one-way">One Way</button>
-                    <button class="tab" id="round-trip">Round Trip</button>
-                    <button class="tab" id="outstation">Outstation</button>
-                </div>
-                <div class="form">
-                    <div class="form-group">
-                        <label for="pickup-location">Choose Location</label>
-                        <input type="text" id="pickup-location" placeholder="Enter 4 letters to Search PickUp Location">
-                        <input type="text" id="drop-location" placeholder="Enter 4 letters to Search Drop Location">
-                    </div>
-                    <div class="form-group">
-                        <label for="when-needed">When is driver needed?</label>
-                        <select id="when-needed">
-                            <option value="now">Now</option>
-                            <option value="later">Later</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="car-type">Car Type</label>
-                        <select id="car-type">
-                            <option value="manual">Manual</option>
-                            <option value="automatic">Automatic</option>
-                        </select>
-                        <select id="car-model">
-                            <option value="hatchback">Hatchback</option>
-                            <option value="sedan">Sedan</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="apply-coupon">Apply Coupon</label>
-                        <input type="text" id="apply-coupon" placeholder="Click above to see offers">
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" id="damage-protection" checked>
-                        <label for="damage-protection">Get vehicle damage protection plan for your car for ₹15 + GST. T&C apply*</label>
-                    </div>
-                    <button id="request-driver" class="btn">Request Driver</button>
-                </div>
-            </div>
-        </div>
-        <div class="map">
-            <div id="map"></div>
-        </div>
-    </div>
-    <script src="assets/js/script.js"></script>
-</body>
-</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #343a40;
+    color: white;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.menu-content {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu-content a {
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.menu:hover .menu-content {
+    display: flex;
+}
+
+.container {
+    display: flex;
+}
+
+.side-panel {
+    width: 30%;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.tab {
+    flex: 1;
+    padding: 1rem;
+    background-color: #dee2e6;
+    border: none;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: white;
+    border-bottom: 2px solid green;
+}
+
+.map {
+    flex: 1;
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+    background-color: #E9ECEF;
+}
+
+section {
+    padding: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.login-signup {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
+}

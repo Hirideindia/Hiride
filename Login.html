@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HiRider - Login/Signup</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>HiRider</h1>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="login-section">
+    <h2>Login/Signup</h2>
+    <div>
+      <input type="text" id="phone-number" placeholder="Enter Mobile Number">
+      <button onclick="sendOtp()">Send OTP</button>
+    </div>
+    <div id="recaptcha-container"></div>
+    <div>
+      <input type="text" id="otp" placeholder="Enter OTP">
+      <button onclick="verifyOtp()">Verify OTP</button>
+    </div>
+    <div>
+      <button onclick="googleSignIn()">Sign in with Google</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 HiRider. All rights reserved.</p>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

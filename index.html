@@ -41,6 +41,45 @@
     <button onclick="location.href='login.html'">Login/Signup</button>
   </section>
 
+  <section id="booking">
+    <h2>Book a Ride</h2>
+    <form id="booking-form">
+      <label for="start-date">Start Date and Time:</label>
+      <input type="datetime-local" id="start-date" required>
+
+      <label for="end-date">End Date and Time:</label>
+      <input type="datetime-local" id="end-date" required>
+
+      <label for="pickup-place">Pickup Place:</label>
+      <input type="text" id="pickup-place" required>
+
+      <label for="drop-place">Drop Place:</label>
+      <input type="text" id="drop-place" required>
+
+      <label for="car-name">Car Name:</label>
+      <input type="text" id="car-name" required>
+
+      <label for="transmission">Transmission:</label>
+      <select id="transmission" required>
+        <option value="manual">Manual</option>
+        <option value="automatic">Automatic</option>
+      </select>
+
+      <label for="package">Package:</label>
+      <select id="package" required>
+        <option value="roundtrip">Roundtrip</option>
+        <option value="oneway">One-way</option>
+        <option value="outstation">Outstation</option>
+        <option value="monthly">Monthly</option>
+      </select>
+
+      <button type="button" onclick="calculateFare()">Calculate Fare</button>
+      <p id="fare"></p>
+
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+
   <footer>
     <p>&copy; 2024 HiRider. All rights reserved.</p>
   </footer>

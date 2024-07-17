@@ -59,3 +59,64 @@ function googleSignIn() {
     alert('Error; Google sign-in failed');
   });
 }
+
+function calculateFare() {
+  const startDate = new Date(document.getElementById('start-date').value);
+  const endDate = new Date(document.getElementById('end-date').value);
+  const transmission = document.getElementById('transmission').value;
+  const packageType = document.getElementById('package').value;
+
+  if (startDate >= endDate) {
+    alert("End date must be after start date.");
+    return;
+  }
+
+  // Basic fare calculation example
+  const hours = Math.abs(endDate - startDate) / 36e5;
+  let fare = 0;
+
+  switch(packageType) {
+    case "roundtrip":
+      fare = hours * 100;
+      break;
+    case "oneway":
+      fare = hours * 75;
+      break;
+    case "outstation":
+      fare = hours * 150;
+      break;
+    case "monthly":
+      fare = hours * 50;
+      break;
+  }
+
+  if (transmission === "automatic") {
+    fare += hours * 20;
+  }
+
+  document.getElementById('fare').innerText = `Estimated Fare: ₹${fare.toFixed(2)}`;
+}
+
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const bookingData = {
+    startDate: document.getElementById('start-date').value,
+    endDate: document.getElementById('end-date').value,
+    pickupPlace: document.getElementById('pickup-place').value,
+    dropPlace: document.getElementById('drop-place').value,
+    carName: document.getElementById('car-name').value,
+    transmission: document.getElementById('transmission').value,
+    packageType: document.getElementById('package').value,
+    fare: document.getElementById('fare').innerText.replace('Estimated Fare: ₹', '')
+  };
+
+  db.collection('bookings').add(bookingData)
+    .then(function() {
+      alert('Booking successful!');
+    })
+    .catch(function(error) {
+      console.error('Error adding booking: ', error);
+      alert('Error; booking failed');
+    });
+});

@@ -1,16 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BookingForm from './components/BookingForm';
-import './index.css';
+import './App.css';
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" component={BookingForm} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<BookingForm />} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;

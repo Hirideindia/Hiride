@@ -3,10 +3,12 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #bfcbbe;
+  color: #1d1420;
 }
 
 header {
-  background-color: #333;
+  background-color: #8a8f63;
   color: white;
   padding: 10px 0;
   text-align: center;
@@ -33,8 +35,20 @@ section {
 }
 
 footer {
-  background-color: #333;
+  background-color: #8a8f63;
   color: white;
   text-align: center;
   padding: 10px 0;
+}
+
+button {
+  background-color: #1d1420;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #908c92;
 }

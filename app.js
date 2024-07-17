@@ -1,6 +1,6 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-apiKey: "AIzaSyCZ7UXxGoUlyxxNeRjcWT_7zmm9RjMX7fE",
+  apiKey: "AIzaSyCZ7UXxGoUlyxxNeRjcWT_7zmm9RjMX7fE",
   authDomain: "hiride-10d34.firebaseapp.com",
   projectId: "hiride-10d34",
   storageBucket: "hiride-10d34.appspot.com",
@@ -15,11 +15,12 @@ const db = firebase.firestore();
 
 window.onload = function() {
   window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-    'size': 'invisible',
+    'size': 'normal',
     'callback': function(response) {
-      sendOtp();
+      // reCAPTCHA solved, allow sendOtp()
     }
   });
+  recaptchaVerifier.render();
 };
 
 function sendOtp() {
@@ -37,7 +38,7 @@ function sendOtp() {
 
 function verifyOtp() {
   var otp = document.getElementById('otp').value;
-  confirmationResult.confirm(otp).then(function(result) {
+  window.confirmationResult.confirm(otp).then(function(result) {
     var user = result.user;
     alert('Phone number verified');
     // Handle user signed in

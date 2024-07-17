@@ -1,103 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <title>HiRide</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HiRider - Reliable Ride-Hailing in Hyderabad</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
     <nav>
-        <div class="logo">HiRide</div>
-        <div class="menu">
-            <span class="menu-icon">☰</span>
-            <div class="menu-content">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-                <a href="#partner">Partner</a>
-                <a href="#login">Login/Signup</a>
-            </div>
-        </div>
+      <h1>HiRider</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
     </nav>
-    <div class="container">
-        <div class="side-panel">
-            <div class="ride-options">
-                <div class="tabs">
-                    <button class="tab active" id="one-way">One Way</button>
-                    <button class="tab" id="round-trip">Round Trip</button>
-                    <button class="tab" id="outstation">Outstation</button>
-                </div>
-                <div class="form">
-                    <div class="form-group">
-                        <label for="pickup-location">Choose Location</label>
-                        <input type="text" id="pickup-location" placeholder="Enter 4 letters to Search PickUp Location">
-                        <input type="text" id="drop-location" placeholder="Enter 4 letters to Search Drop Location">
-                    </div>
-                    <div class="form-group">
-                        <label for="when-needed">When is driver needed?</label>
-                        <select id="when-needed">
-                            <option value="now">Now</option>
-                            <option value="later">Later</option>
-                        </select>
-                        <input type="datetime-local" id="pickup-datetime" placeholder="Pick Date and Time">
-                    </div>
-                    <div class="form-group">
-                        <label for="car-type">Car Type</label>
-                        <select id="car-type">
-                            <option value="manual">Manual</option>
-                            <option value="automatic">Automatic</option>
-                        </select>
-                        <select id="car-model">
-                            <option value="hatchback">Hatchback</option>
-                            <option value="sedan">Sedan</option>
-                        </select>
-                    </div>
-                    <button id="request-driver" class="btn">Request Driver</button>
-                </div>
-            </div>
-        </div>
-        <div class="map">
-            <div id="map"></div>
-        </div>
-    </div>
+  </header>
 
-    <section id="home">
-        <h1>Welcome to HiRide</h1>
-        <p>Your trusted partner for hiring temporary drivers in Hyderabad.</p>
-    </section>
-    <section id="services">
-        <h1>Our Services</h1>
-        <p>We offer a range of services including hourly, round trip, one-way, outstation, and monthly packages.</p>
-    </section>
-    <section id="about">
-        <h1>About Us</h1>
-        <p>Learn more about HiRide and our mission to provide reliable and affordable driver services.</p>
-    </section>
-    <section id="contact">
-        <h1>Contact Us</h1>
-        <p>Get in touch with us for any queries or support.</p>
-    </section>
-    <section id="partner">
-        <h1>Partner with Us</h1>
-        <p>Join us as a driver partner and start earning with HiRide.</p>
-    </section>
-    <section id="login">
-        <h1>Login/Signup</h1>
-        <div class="login-signup">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter your username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password">
-            </div>
-            <button id="login-btn" class="btn">Login</button>
-            <button id="signup-btn" class="btn">Signup</button>
-        </div>
-    </section>
-    <script src="assets/js/script.js"></script>
+  <section id="home">
+    <h2>Welcome to HiRider</h2>
+    <p>Your reliable ride-hailing service in Hyderabad.</p>
+    <button onclick="location.href='#booking'">Book a Ride</button>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>We offer airport transfers, city commutes, and outstation trips.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: contact@hirider.com</p>
+    <p>Phone: +91-1234567890</p>
+  </section>
+
+  <section id="login">
+    <h2>Login/Signup</h2>
+    <button onclick="location.href='login.html'">Login/Signup</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 HiRider. All rights reserved.</p>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

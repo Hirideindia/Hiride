@@ -1,92 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HiRider - Reliable Ride-Hailing in Hyderabad</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HiRide</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+<div class="header">
+    <a href="#home">HiRide</a>
     <nav>
-      <h1>HiRider</h1>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#login">Login</a></li>
-      </ul>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#partner">Partner</a>
     </nav>
-  </header>
+</div>
 
-  <section id="home">
-    <h2>Welcome to HiRider</h2>
-    <p>Your reliable ride-hailing service in Hyderabad.</p>
-    <button onclick="location.href='#booking'">Book a Ride</button>
-  </section>
+<div class="container">
+    <div id="home" class="home-content">
+        <h2>Welcome to HiRide</h2>
+        <p>Your premier driver booking service in Hyderabad! Whether you need a driver for an hour, a day, or a longer period, HiRide connects you with professional and reliable drivers to ensure a safe and comfortable journey. Our easy-to-use platform allows you to book drivers for various car types tailored to your specific needs. Experience seamless bookings, transparent pricing, and exceptional service with HiRide. Book your driver today and travel with peace of mind!</p>
+        <button class="btn" onclick="showModal('loginModal')">Book a Driver</button>
+    </div>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <p>We offer airport transfers, city commutes, and outstation trips.</p>
-  </section>
+    <div id="services" class="home-content">
+        <h2>Our Services</h2>
+        <p>We offer the following packages to cater to all travel needs:</p>
+        <ul>
+            <li>Roundtrip</li>
+            <li>Oneway</li>
+            <li>Hourly</li>
+            <li>Outstation</li>
+            <li>Monthly</li>
+        </ul>
+    </div>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: contact@hirider.com</p>
-    <p>Phone: +91-1234567890</p>
-  </section>
+    <div id="contact" class="home-content">
+        <h2>Contact Us</h2>
+        <p>Reach us at <a href="mailto:hirideindia@gmail.com">hirideindia@gmail.com</a></p>
+    </div>
 
-  <section id="login">
-    <h2>Login/Signup</h2>
-    <button onclick="location.href='login.html'">Login/Signup</button>
-  </section>
+    <div id="about" class="home-content">
+        <h2>About Us</h2>
+        <p>HiRide offers seamless travel services in Hyderabad, connecting you with professional drivers for a safe and comfortable journey.</p>
+    </div>
 
-  <section id="booking">
-    <h2>Book a Ride</h2>
-    <form id="booking-form">
-      <label for="start-date">Start Date and Time:</label>
-      <input type="datetime-local" id="start-date" required>
+    <div id="partner" class="home-content">
+        <h2>Partner with Us</h2>
+        <p>If you are interested in partnering with HiRide, please contact us at <a href="mailto:hirideindia@gmail.com">hirideindia@gmail.com</a></p>
+        <button class="btn" onclick="showModal('driverLoginModal')">Driver Partner Login</button>
+    </div>
+</div>
 
-      <label for="end-date">End Date and Time:</label>
-      <input type="datetime-local" id="end-date" required>
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <h3>Login / Signup</h3>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="mobile" placeholder="Mobile" oninput="validateMobile()" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="otp" placeholder="OTP (1234)" required>
+        <button class="btn" id="otp-btn" onclick="sendOTP()">Send OTP</button>
+        <button class="btn" id="verify-btn" onclick="verifyOTP()">Verify OTP</button>
+        <button class="btn" id="google-btn" onclick="googleSignIn()">Sign in with Google</button>
+    </div>
+</div>
 
-      <label for="pickup-place">Pickup Place:</label>
-      <input type="text" id="pickup-place" required>
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('bookingModal')">&times;</span>
+        <h3>Book a Driver</h3>
+        <input type="datetime-local" id="start-date-time" required>
+        <input type="datetime-local" id="end-date-time" required>
+        <input type="text" id="pickup-location" placeholder="Start/Pickup Location" required>
+        <input type="text" id="drop-location" placeholder="End/Drop Location" required>
+        <input type="text" id="car-name" placeholder="Car Name" required>
+        <select id="car-type">
+            <option value="hatchback">Hatchback</option>
+            <option value="suv">SUV</option>
+            <option value="compact-suv">Compact SUV</option>
+            <option value="sedan">Sedan</option>
+            <option value="luxury">Luxury</option>
+        </select>
+        <select id="transmission">
+            <option value="manual">Manual</option>
+            <option value="automatic">Automatic</option>
+        </select>
+        <select id="package">
+            <option value="roundtrip">Roundtrip</option>
+            <option value="oneway">Oneway</option>
+            <option value="hourly">Hourly</option>
+            <option value="outstation">Outstation</option>
+            <option value="monthly">Monthly</option>
+        </select>
+        <p id="fare">Fare: ₹0.00</p>
+        <button class="btn" onclick="confirmBooking()">Confirm Booking</button>
+    </div>
+</div>
 
-      <label for="drop-place">Drop Place:</label>
-      <input type="text" id="drop-place" required>
+<div id="driverLoginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('driverLoginModal')">&times;</span>
+        <h3>Driver Partner Login</h3>
+        <button class="btn" onclick="googleSignInAsDriver()">Sign in with Google</button>
+    </div>
+</div>
 
-      <label for="car-name">Car Name:</label>
-      <input type="text" id="car-name" required>
-
-      <label for="transmission">Transmission:</label>
-      <select id="transmission" required>
-        <option value="manual">Manual</option>
-        <option value="automatic">Automatic</option>
-      </select>
-
-      <label for="package">Package:</label>
-      <select id="package" required>
-        <option value="roundtrip">Roundtrip</option>
-        <option value="oneway">One-way</option>
-        <option value="outstation">Outstation</option>
-        <option value="monthly">Monthly</option>
-      </select>
-
-      <button type="button" onclick="calculateFare()">Calculate Fare</button>
-      <p id="fare"></p>
-
-      <button type="submit">Book Now</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2024 HiRider. All rights reserved.</p>
-  </footer>
-
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
-  <script src="app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>

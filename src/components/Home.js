@@ -1,22 +1,17 @@
-import React from "react";
-import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
-  const handleBooking = async (event) => {
-    event.preventDefault();
-    const bookingData = {
-      fromAddress: event.target.fromAddress.value,
-      toAddress: event.target.toAddress.value,
-      needDateTime: event.target.needDateTime.value,
-      tillDateTime: event.target.tillDateTime.value,
-      package: event.target.package.value,
-      carType: event.target.carType.value,
-      transmission: event.target.transmission.value,
-      estimatedFare: event.target.estimatedFare.value,
-    };
+  const [pickup, setPickup] = useState("");
+  const [destination, setDestination] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [vehicleType, setVehicleType] = useState("");
 
-    try {
-      await addDoc(collection(db, "bookings"), bookingData);
-      alert("Booking confirmed!");
-   
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle the booking submission here, e.g., send it to a server or display a confirmation
+    alert("Booking confirmed!");
+  };
+
+  return

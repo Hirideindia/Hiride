@@ -1,0 +1,19 @@
+.home {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f5f5f5;
+}
+
+.intro {
+  margin-bottom: 30px;
+}
+
+.intro h1 {
+  color: #381145;
+}
+
+.intro p {
+  color: #1d1420;
+  font-size: 18px;
+  line-height: 1.5;
+}

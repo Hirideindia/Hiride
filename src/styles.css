@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+header, footer {
+    background-color: #381145;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+nav {
+    background-color: #00aeff;
+    padding: 1em;
+    text-align: center;
+}
+nav a {
+    color: white;
+    margin: 0 1em;
+    text-decoration: none;
+}
+.container {
+    padding: 2em;
+}
+.booking-section {
+    background-color: #bfcbbe;
+    padding: 2em;
+    margin-top: 2em;
+    border-radius: 8px;
+}
+.booking-section input, .booking-section select {
+    display: block;
+    width: 100%;
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 4px;
+   

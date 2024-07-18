@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Contact from './Contact';
-import Login from './Login';
-import SignUp from './SignUp';
-import BookDriver from './BookDriver';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import BookDriver from './components/BookDriver';
 
 function App() {
   return (

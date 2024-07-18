@@ -35,4 +35,7 @@ nav a {
     margin: 1em 0;
     padding: 1em;
     border-radius: 4px;
+    border: 1px solid #908c92;
+}
+.booking-section button {
    

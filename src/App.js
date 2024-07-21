@@ -1,14 +1,14 @@
-import React from 'react';
-import './App.css';
+// src/App.js
 
-function App() {
+import React from 'react';
+import SignIn from './SignIn';
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to Hiride</h1>
-      </header>
+      <SignIn />
     </div>
   );
-}
+};
 
 export default App;

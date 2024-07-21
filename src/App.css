@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .App {
   text-align: center;
 }
@@ -15,3 +16,22 @@ form {
 input {
   margin: 5px;
   padding: 10px
+=======
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input {
+  margin: 5px;
+  padding: 10px
+>>>>>>> a88f2e85337e91751fe57a7b5d0c804af84cf635

@@ -1,14 +1,14 @@
-// src/App.js
-
 import React from 'react';
-import SignIn from './SignIn';
+import './App.css';
 
-const App = () => {
+function App() {
   return (
     <div className="App">
-      <SignIn />
+      <header className="App-header">
+        <h1>Welcome to Hiride</h1>
+      </header>
     </div>
   );
-};
+}
 
 export default App;

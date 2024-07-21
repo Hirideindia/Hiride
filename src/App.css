@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input {
+  margin: 5px;
+  padding: 10px

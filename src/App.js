@@ -1,12 +1,16 @@
+// src/App.js
 import React from 'react';
-import './App.css';
+import BookingForm from './BookingForm';
+import GoogleSignIn from './GoogleSignIn';
+import PhoneSignIn from './PhoneSignIn';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Welcome to Hiride</h1>
-      </header>
+      <h1>Welcome to HiRide</h1>
+      <GoogleSignIn />
+      <PhoneSignIn />
+      <BookingForm />
     </div>
   );
 }

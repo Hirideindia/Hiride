@@ -44,4 +44,3 @@ const BookingComponent = () => {
                         <label htmlFor="carName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name of car</label>
                         <input type="text" id="carName" className="block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" required />
                     </div>
-                    <

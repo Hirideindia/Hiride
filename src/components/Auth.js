@@ -1,7 +1,7 @@
 // src/components/Auth.js
 import React, { useState } from "react";
 import { auth } from "../firebase";
-import firebase from "firebase/app";
+import firebase from 'firebase/compat/app';
 
 const Auth = ({ setUser }) => {
   const [phone, setPhone] = useState("");

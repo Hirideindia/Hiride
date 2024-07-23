@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useState } from "react";
 import Auth from "./components/Auth";
+import LoginSignup from './components/LoginSignup';
 import Booking from "./components/Booking";
 
 const App = () => {

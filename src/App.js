@@ -1,17 +1,13 @@
 // src/App.js
-import React, { useState } from "react";
-import Auth from "./components/Auth";
+import React from 'react';
 import LoginSignup from './components/LoginSignup';
-import Booking from "./components/Booking";
 
-const App = () => {
-  const [user, setUser] = useState(null);
-
-  return (
-    <div>
-      {!user ? <Auth setUser={setUser} /> : <Booking user={user} />}
-    </div>
-  );
-};
+function App() {
+    return (
+        <div className="App">
+            <LoginSignup />
+        </div>
+    );
+}
 
 export default App;

@@ -1,5 +1,6 @@
 module.exports = {
-  darkMode: 'class', // or 'media' if you want to use the system dark mode setting
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {},
   },
